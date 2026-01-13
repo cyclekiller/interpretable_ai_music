@@ -1,13 +1,106 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My Audio Page</title>
-  </head>
-  <body>
-    <h1>My Audio Page</h1>
-    <audio controls>
-      <source src="audio/model_ver9_result_4.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
-  </body>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Music generation quality comparison</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+         margin:0;padding:2rem;background:#f7f7f7;color:#222}
+    h1{text-align:center;margin-bottom:1.5rem}
+    .intro{background:#fff;border-radius:8px;padding:1.5rem 2rem;margin:0 auto 2rem;max-width:900px;box-shadow:0 2px 6px rgba(0,0,0,.08);line-height:1.7}
+    .grid{display:grid;gap:1.5rem;max-width:900px;margin:auto}
+    .card{background:#fff;border-radius:8px;padding:1.2rem 1.5rem;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+    .card h2{margin:.2rem 0 .7rem;font-size:1.1rem}
+    .pair{display:flex;gap:1rem;flex-wrap:wrap}
+    .pair audio{flex:1 1 260px;width:100%}
+    .label{flex:0 0 70px;font-weight:600;font-size:.9rem;color:#555;display:flex;align-items:center}
+  </style>
+</head>
+<body>
+
+  <h1>Music generation quality comparison</h1>
+
+  <section class="intro">
+    <strong>样本生成方式：</strong><br>
+    先用 notagen 模型随机生成若干首歌曲，从中截取包含 3–4 个声部的片段；保留 notagen 随机生成的第一声部（旋律），其余声部及和声进行由我们的模型重新创作。
+    因此每一组对比（如 1_notagen.mp3 vs 1_ours.mp3）都是在同一段旋律上展开的。<br>
+    所有音频均通过 MuseScore 由 MIDI 渲染：统一钢琴音色、统一音符力度，无额外混音处理。<br>
+
+    <strong>Sample generation method:</strong><br>
+    First the NotaGen model produced several songs; we picked clips that contain 3–4 voices.
+    Keeping the first voice (melody) that NotaGen randomly generated, we composed the remaining voices and the harmony progression with our model.
+    Thus every comparison (e.g. 1_NotaGen.mp3 vs 1_ours.mp3) starts from the same melody.<br>
+    All audio was rendered from MIDI with MuseScore: identical piano sound, identical note velocities, no extra mixing.<br>
+  </section>
+
+  <div class="grid">
+    <!-- Paste new blocks here if you add more files -->
+    <!-- 1 -->
+    <div class="card">
+      <h2>Example 1</h2>
+      <div class="pair">
+        <span class="label">NotaGen</span>
+        <audio controls preload="metadata"><source src="audio/1_notagen.mp3" type="audio/mpeg"></audio>
+      </div>
+      <div class="pair">
+        <span class="label">Ours</span>
+        <audio controls preload="metadata"><source src="audio/1_ours.mp3" type="audio/mpeg"></audio>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="card">
+      <h2>Example 2</h2>
+      <div class="pair">
+        <span class="label">NotaGen</span>
+        <audio controls preload="metadata"><source src="audio/2_notagen.mp3" type="audio/mpeg"></audio>
+      </div>
+      <div class="pair">
+        <span class="label">Ours</span>
+        <audio controls preload="metadata"><source src="audio/2_ours.mp3" type="audio/mpeg"></audio>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="card">
+      <h2>Example 3</h2>
+      <div class="pair">
+        <span class="label">NotaGen</span>
+        <audio controls preload="metadata"><source src="audio/3_notagen.mp3" type="audio/mpeg"></audio>
+      </div>
+      <div class="pair">
+        <span class="label">Ours</span>
+        <audio controls preload="metadata"><source src="audio/3_ours.mp3" type="audio/mpeg"></audio>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="card">
+      <h2>Example 4</h2>
+      <div class="pair">
+        <span class="label">NotaGen</span>
+        <audio controls preload="metadata"><source src="audio/4_notagen.mp3" type="audio/mpeg"></audio>
+      </div>
+      <div class="pair">
+        <span class="label">Ours</span>
+        <audio controls preload="metadata"><source src="audio/4_ours.mp3" type="audio/mpeg"></audio>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="card">
+      <h2>Example 5</h2>
+      <div class="pair">
+        <span class="label">NotaGen</span>
+        <audio controls preload="metadata"><source src="audio/5_notagen.mp3" type="audio/mpeg"></audio>
+      </div>
+      <div class="pair">
+        <span class="label">Ours</span>
+        <audio controls preload="metadata"><source src="audio/5_ours.mp3" type="audio/mpeg"></audio>
+      </div>
+    </div>
+  </div>
+
+</body>
 </html>
